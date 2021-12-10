@@ -94,5 +94,10 @@ namespace Livrable2
                 MessageBox.Show("Le répertoire source Destination est vide");
             }
         }
+
+        private void Button_Click3(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
