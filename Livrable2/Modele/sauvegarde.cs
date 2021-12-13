@@ -4,42 +4,73 @@ using System.Text;
 using System.IO;
 using Livrable2.Modele;
 using System.Diagnostics;
+using Livrable2.Vue;
 
 namespace Livrable2.Modele
 {
     public class sauvegarde
     {
+       
+        public static float pourcent;
         private string source;
         public static State etat_file;
         public static int nbfile;
+        public static int nb;
+
         private string destination;
         private string nom;
         private string type;
         private static double tmp;
+        public float p;
 
 
-        public static void sauvegarde_complet(string source, string dest)
+       
+
+        public static void sauvegarde_complet(string source, string dest, sauvegarde save)
         {
+            
+            float ca;
+            Stopwatch sw = Stopwatch.StartNew();
             etat_file = State.INPROGRESS;
+
+            DirectoryInfo disource = new DirectoryInfo(source);
+            long taille = log.file_size(disource);
+
+
+            Window4 gggg = new Window4();
+            gggg.Show();
+           
 
             foreach (var directory in Directory.GetDirectories(source))
             {
+
                 string dirName = Path.GetFileName(directory);
                 if (!Directory.Exists(Path.Combine(dest, dirName)))
                 {
                     Directory.CreateDirectory(Path.Combine(dest, dirName));
                     Console.Write(Path.Combine(dest, dirName));
                 }
-                sauvegarde_complet(directory, Path.Combine(dest, dirName));
+                sauvegarde_complet(directory, Path.Combine(dest, dirName), save);
+                nb=nb+1;
             }
+            
             nbfile = 0;
+          
             foreach (var file in Directory.GetFiles(source))
             {
                 File.Copy(file, Path.Combine(dest, Path.GetFileName(file)));
                 nbfile++;
+                ca = (nbfile / nb) * 100;
+                pourcent = ca;
+
             }
+            
             etat_file = State.END;
 
+            sw.Stop();
+            double time_exec = sw.Elapsed.TotalMilliseconds;
+            log.write_log(save, taille, log.time_now(), time_exec); // execute fonction qui va permettre d'écrire dans fichier JSON
+            states.write_file(save, taille);
 
         }
 
@@ -48,7 +79,7 @@ namespace Livrable2.Modele
         {
 
         }
-
+      
 
         public void set_source(string source)
         {
@@ -74,6 +105,10 @@ namespace Livrable2.Modele
         {
             tmp = temp;
         }
+        public void Set_P()
+        {
+          p = pourcent;
+        }
 
         public string get_source()
         {
@@ -92,6 +127,10 @@ namespace Livrable2.Modele
         public string get_type()
         {
             return this.type;
+        }
+        public float get_p()
+        {
+            return p;
         }
     }
 }

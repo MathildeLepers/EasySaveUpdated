@@ -1,0 +1,21 @@
+﻿<Window x:Class="Livrable2.Vue.Window4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Livrable2.Vue"
+        mc:Ignorable="d"
+        Title="Window4" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <ProgressBar HorizontalAlignment="Left" Height="32" Margin="242,185,0,0" VerticalAlignment="Top" Width="316" Grid.ColumnSpan="2"  Minimum="0" Maximum="100" Name="progress" ValueChanged="progress_ValueChanged"  />
+        <Button Content="Button" Margin="100,247,45,159"/>
+        <Button Content="Button" Margin="52,247,332,159" Grid.Column="1"/>
+        <Button Content="Button" Margin="286,247,99,159" Grid.Column="1"/>
+        <Label Content="Etat d'avancement " Margin="64,144,332,266" Grid.Column="1"/>
+
+    </Grid>
+</Window>

@@ -13,6 +13,7 @@
         </Grid.ColumnDefinitions>
         <Grid Background="#FF050840" Grid.ColumnSpan="2">
             <Button Content="Commencer" HorizontalAlignment="Left" Margin="625,321,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click"/>
+            <Button Content="Ajouter" HorizontalAlignment="Left" Margin="625,280,0,0" VerticalAlignment="Top" Width="107" Click="Button_Add"/>
             <TextBox x:Name="TextboxName" HorizontalAlignment="Left" Margin="179,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="25" TextChanged="TextBox_TextChanged" FontSize="20"/>
             <TextBox x:Name="TextboxSourceFR" HorizontalAlignment="Left" Margin="179,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="39" TextChanged="TextBox_TextChanged_1"/>
             <TextBox x:Name="TextboxDestinationFR" HorizontalAlignment="Left" Margin="179,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="39" TextChanged="TextBox_TextChanged"/>
