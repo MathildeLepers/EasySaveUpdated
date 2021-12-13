@@ -21,6 +21,8 @@ namespace Livrable2
     /// </summary>
     public partial class Window1 : Window
     {
+        public List<sauvegarde> saveList = new List<sauvegarde>();
+        public List<Thread> threadList = new List<Thread>();
         public Window1()
         {
             InitializeComponent();
@@ -95,27 +97,32 @@ namespace Livrable2
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Add(object sender, RoutedEventArgs e)
         {
-            Stopwatch sw = Stopwatch.StartNew();
             sauvegarde save = new sauvegarde();
             save.set_nom(TextboxName.Text);
             save.set_source(TextboxSourceFR.Text);
             save.set_destination(TextboxDestinationFR.Text);
-            sauvegarde.sauvegarde_complet(save.get_source(), save.get_destination());
+            saveList.Add(save);
+            TextboxSourceFR.Text = "";
+            TextboxDestinationFR.Text = "";
+        }
 
-            string source_directory = TextboxSourceFR.Text;
-            DirectoryInfo disource = new DirectoryInfo(source_directory);
-            long taille = log.file_size(disource);
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            for(int i = 0; i < saveList.Count; i++){              
+                
+                sauvegarde save = saveList[i];
 
-            sw.Stop();
-            Console.Write(sw.Elapsed.TotalMilliseconds);
-            double time_exec = sw.Elapsed.TotalMilliseconds;
+                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save.get_source(), save.get_destination(), save));
+                threadList.Add(thread);
+            }
 
 
-
-            log.write_log(save, taille, log.time_now(), time_exec); // execute fonction qui va permettre d'écrire dans fichier JSON
-            states.write_file(save, taille);
+            for(int j = 0; j < threadList.Count; j++)
+            {
+                threadList[j].Start();
+            }
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)
