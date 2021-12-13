@@ -55,6 +55,8 @@ namespace Livrable2.Modele
                 {
                     if (!File.Exists(fileName))
                     {
+                        FileInfo fichier = new FileInfo("C:\\Users\\leper\\Documents\\CESI\\Informatique\\02-ProgrammationSysteme\\Projet\\log.JSON");
+                        fichier.Create();
                         listJSON.Add(log);
                         var options = new JsonSerializerOptions { WriteIndented = true };
                         string jsonString = System.Text.Json.JsonSerializer.Serialize(listJSON, options);

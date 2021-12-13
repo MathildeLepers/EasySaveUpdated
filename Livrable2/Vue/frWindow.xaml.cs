@@ -110,24 +110,15 @@ namespace Livrable2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            for(int i = 0; i < saveList.Count; i++){
-                //Stopwatch sw = Stopwatch.StartNew();
-
+            for(int i = 0; i < saveList.Count; i++){              
+                
                 sauvegarde save = saveList[i];
-                //string source_directory = TextboxSourceFR.Text;
-               // DirectoryInfo disource = new DirectoryInfo(source_directory);
-                //long taille = log.file_size(disource);
-                //sw.Stop();
 
-                //Console.Write(sw.Elapsed.TotalMilliseconds);
-                //double time_exec = sw.Elapsed.TotalMilliseconds;
-
-                //log.write_log(save, taille, log.time_now(), time_exec); // execute fonction qui va permettre d'écrire dans fichier JSON
-                //states.write_file(save, taille);
-
-                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save.get_source(), save.get_destination()));
+                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save.get_source(), save.get_destination(), save));
                 threadList.Add(thread);
             }
+
+
             for(int j = 0; j < threadList.Count; j++)
             {
                 threadList[j].Start();

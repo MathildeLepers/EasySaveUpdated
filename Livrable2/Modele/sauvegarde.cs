@@ -18,9 +18,14 @@ namespace Livrable2.Modele
         private static double tmp;
 
 
-        public static void sauvegarde_complet(string source, string dest)
+        public static void sauvegarde_complet(string source, string dest, sauvegarde save)
         {
+            Stopwatch sw = Stopwatch.StartNew();
             etat_file = State.INPROGRESS;
+
+            DirectoryInfo disource = new DirectoryInfo(source);
+            long taille = log.file_size(disource);
+            
 
             foreach (var directory in Directory.GetDirectories(source))
             {
@@ -30,16 +35,23 @@ namespace Livrable2.Modele
                     Directory.CreateDirectory(Path.Combine(dest, dirName));
                     Console.Write(Path.Combine(dest, dirName));
                 }
-                sauvegarde_complet(directory, Path.Combine(dest, dirName));
+                sauvegarde_complet(directory, Path.Combine(dest, dirName), save);
             }
+            
             nbfile = 0;
+            
             foreach (var file in Directory.GetFiles(source))
             {
                 File.Copy(file, Path.Combine(dest, Path.GetFileName(file)));
                 nbfile++;
             }
+            
             etat_file = State.END;
 
+            sw.Stop();
+            double time_exec = sw.Elapsed.TotalMilliseconds;
+            log.write_log(save, taille, log.time_now(), time_exec); // execute fonction qui va permettre d'écrire dans fichier JSON
+            states.write_file(save, taille);
 
         }
 
