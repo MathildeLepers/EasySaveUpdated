@@ -51,7 +51,7 @@ namespace Livrable2.Modele
 
                 string json = JsonConvert.SerializeObject(log);
 
-                string fileName = @"C:\Users\ryan2\Desktop\CESI\CI A3\Programmation système\Projet\Livrable 1\log\log.json"; // emplacement fichier log
+                string fileName = @"C:\Users\leper\Documents\CESI\Informatique\02-ProgrammationSysteme\Projet"; // emplacement fichier log
                 {
                     if (!File.Exists(fileName))
                     {
