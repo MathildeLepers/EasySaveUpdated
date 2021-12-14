@@ -28,7 +28,7 @@ namespace Livrable2.Modele
                 file.State = Modele.sauvegarde.etat_file;
                 file.NbFiles = Modele.sauvegarde.nbfile;
 
-                string fileName = @"C:\Users\leper\Documents\CESI\Informatique\02-ProgrammationSysteme\Projet"; // emplacement fichier file
+                string fileName = @"C:\Users\leper\Documents\CESI\Informatique\02-ProgrammationSysteme\Projet\States.JSON"; // emplacement fichier file
                 {
                     var options = new JsonSerializerOptions { WriteIndented = true };
                     string jsonString = System.Text.Json.JsonSerializer.Serialize(file, options);
