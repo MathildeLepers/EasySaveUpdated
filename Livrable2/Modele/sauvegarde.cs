@@ -16,10 +16,15 @@ namespace Livrable2.Modele
         private string nom;
         private string type;
         private static double tmp;
+        public string[] ext;
 
 
-        public static void sauvegarde_complet(string source, string dest, sauvegarde save)
+
+        public static void sauvegarde_complet(sauvegarde save)
         {
+            string dest = save.get_destination();
+            string[] ext = save.get_ext();
+            string source = save.get_source();
             Stopwatch sw = Stopwatch.StartNew();
             etat_file = State.INPROGRESS;
 
@@ -35,17 +40,43 @@ namespace Livrable2.Modele
                     Directory.CreateDirectory(Path.Combine(dest, dirName));
                     Console.Write(Path.Combine(dest, dirName));
                 }
-                sauvegarde_complet(directory, Path.Combine(dest, dirName), save);
+                source = directory;
+                dest = Path.Combine(dest, dirName);
+                sauvegarde_complet(save);
             }
             
             nbfile = 0;
-            
+
+            List<string> listFilePrio = new List<string>();
+            List<string> listFileNoPrio = new List<string>();
+
             foreach (var file in Directory.GetFiles(source))
+            {
+                foreach(string extention in ext)
+                {
+                    if(Path.GetExtension(file).Equals(extention, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        listFilePrio.Add(file);
+                    }
+                    else
+                    {
+                        listFileNoPrio.Add(file);
+                    }
+                }
+            }
+
+            foreach(var file in listFilePrio)
             {
                 File.Copy(file, Path.Combine(dest, Path.GetFileName(file)));
                 nbfile++;
             }
-            
+
+            foreach (var file in listFileNoPrio)
+            {
+                File.Copy(file, Path.Combine(dest, Path.GetFileName(file)));
+                nbfile++;
+            }
+
             etat_file = State.END;
 
             sw.Stop();
@@ -61,6 +92,10 @@ namespace Livrable2.Modele
 
         }
 
+        public void set_ext(string[] ext)
+        {
+            this.ext = ext;
+        }
 
         public void set_source(string source)
         {
@@ -90,6 +125,11 @@ namespace Livrable2.Modele
         public string get_source()
         {
             return this.source;
+        }
+
+        public string[] get_ext()
+        {
+            return this.ext;
         }
 
         public string get_destination()
