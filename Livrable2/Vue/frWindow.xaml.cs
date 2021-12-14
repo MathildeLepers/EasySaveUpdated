@@ -100,6 +100,8 @@ namespace Livrable2
         private void Button_Add(object sender, RoutedEventArgs e)
         {
             sauvegarde save = new sauvegarde();
+            String[] listExt = TextboxExt.Text.Split(";");
+            save.set_ext(listExt);
             save.set_nom(TextboxName.Text);
             save.set_source(TextboxSourceFR.Text);
             save.set_destination(TextboxDestinationFR.Text);
@@ -114,7 +116,7 @@ namespace Livrable2
                 
                 sauvegarde save = saveList[i];
 
-                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save.get_source(), save.get_destination(), save));
+                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save));
                 threadList.Add(thread);
             }
 
