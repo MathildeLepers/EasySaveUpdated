@@ -4,45 +4,50 @@ using System.Text;
 using System.IO;
 using Livrable2.Modele;
 using System.Diagnostics;
+using Livrable2.Vue;
 
 namespace Livrable2.Modele
 {
     public class sauvegarde
     {
+       
+        public static float pourcent;
         private string source;
         public static State etat_file;
         public static int nbfile;
+        public static int nb;
+
         private string destination;
         private string nom;
         private string type;
         private static double tmp;
-        public string[] ext;
+        public float p;
 
 
 
-        public static void sauvegarde_complet(sauvegarde save)
+        public static void sauvegarde_complet(string source, string dest, sauvegarde save)
         {
-            string dest = save.get_destination();
-            string[] ext = save.get_ext();
-            string source = save.get_source();
             Stopwatch sw = Stopwatch.StartNew();
             etat_file = State.INPROGRESS;
 
             DirectoryInfo disource = new DirectoryInfo(source);
             long taille = log.file_size(disource);
-            
+
+
+            Window4 gggg = new Window4();
+            gggg.Show();
+           
 
             foreach (var directory in Directory.GetDirectories(source))
             {
+
                 string dirName = Path.GetFileName(directory);
                 if (!Directory.Exists(Path.Combine(dest, dirName)))
                 {
                     Directory.CreateDirectory(Path.Combine(dest, dirName));
                     Console.Write(Path.Combine(dest, dirName));
                 }
-                source = directory;
-                dest = Path.Combine(dest, dirName);
-                sauvegarde_complet(save);
+                sauvegarde_complet(directory, Path.Combine(dest, dirName), save);
             }
             
             nbfile = 0;
@@ -81,6 +86,9 @@ namespace Livrable2.Modele
             {
                 File.Copy(filenoprio, Path.Combine(dest, Path.GetFileName(filenoprio)));
                 nbfile++;
+                ca = (nbfile / nb) * 100;
+                pourcent = ca;
+
             }
 
             etat_file = State.END;
@@ -99,10 +107,6 @@ namespace Livrable2.Modele
 
         }
 
-        public void set_ext(string[] ext)
-        {
-            this.ext = ext;
-        }
 
         public void set_source(string source)
         {
@@ -128,6 +132,10 @@ namespace Livrable2.Modele
         {
             tmp = temp;
         }
+        public void Set_P()
+        {
+          p = pourcent;
+        }
 
         public string get_source()
         {
@@ -151,6 +159,10 @@ namespace Livrable2.Modele
         public string get_type()
         {
             return this.type;
+        }
+        public float get_p()
+        {
+            return p;
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using Livrable2.Modele;
+using Livrable2.Vue;
 
 namespace Livrable2
 {
@@ -21,6 +22,8 @@ namespace Livrable2
     /// </summary>
     public partial class Window1 : Window
     {
+        public List<sauvegarde> saveList = new List<sauvegarde>();
+        public List<Thread> threadList = new List<Thread>();
         
         public Window1()
         {
@@ -105,12 +108,28 @@ namespace Livrable2
 
             TextboxSourceFR.Text = "";
             TextboxDestinationFR.Text = "";
-            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Livrable2.VM.VM.start_save();
+            for(int i = 0; i < saveList.Count; i++){
+               
+                
+                sauvegarde save = saveList[i];
+                  
+                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save.get_source(), save.get_destination(), save));
+                threadList.Add(thread);
+
+
+            }
+
+
+            for(int j = 0; j < threadList.Count; j++)
+            {
+
+                threadList[j].Start();
+            }
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)
@@ -128,5 +147,6 @@ namespace Livrable2
                 dr.Cryptage(file, fileToCrypt);
             }
         }
+
     }
 }
