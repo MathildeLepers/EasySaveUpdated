@@ -118,7 +118,7 @@ namespace Livrable2
                 
                 sauvegarde save = saveList[i];
                   
-                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save.get_source(), save.get_destination(), save));
+                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save));
                 threadList.Add(thread);
 
 
