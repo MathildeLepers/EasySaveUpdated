@@ -22,11 +22,14 @@ namespace Livrable2.Modele
         private string type;
         private static double tmp;
         public float p;
+        public string[] ext;
 
 
 
-        public static void sauvegarde_complet(string source, string dest, sauvegarde save)
+        public static void sauvegarde_complet(sauvegarde save)
         {
+            string source = save.get_source();
+            string dest = save.get_destination();
             Stopwatch sw = Stopwatch.StartNew();
             etat_file = State.INPROGRESS;
 
@@ -47,7 +50,9 @@ namespace Livrable2.Modele
                     Directory.CreateDirectory(Path.Combine(dest, dirName));
                     Console.Write(Path.Combine(dest, dirName));
                 }
-                sauvegarde_complet(directory, Path.Combine(dest, dirName), save);
+                source = directory;
+                dest = Path.Combine(dest, dirName); 
+                sauvegarde_complet(save);
             }
             
             nbfile = 0;
@@ -62,7 +67,7 @@ namespace Livrable2.Modele
 
                 if (softwarestate == false)
                 { 
-                    foreach (string extention in ext)
+                    foreach (string extention in save.get_ext())
                     {
                         if (Path.GetExtension(file).Equals(extention, StringComparison.InvariantCultureIgnoreCase))
                         {
@@ -86,7 +91,7 @@ namespace Livrable2.Modele
             {
                 File.Copy(filenoprio, Path.Combine(dest, Path.GetFileName(filenoprio)));
                 nbfile++;
-                ca = (nbfile / nb) * 100;
+                int ca = (nbfile / nb) * 100;
                 pourcent = ca;
 
             }
@@ -111,6 +116,11 @@ namespace Livrable2.Modele
         public void set_source(string source)
         {
             this.source = source;
+        }
+
+        public void set_ext(string[] ext)
+        {
+            this.ext = ext;
         }
 
         public void set_destination(string destination)
