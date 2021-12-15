@@ -21,6 +21,7 @@ namespace Livrable2
     /// </summary>
     public partial class Window1 : Window
     {
+        
         public Window1()
         {
             InitializeComponent();
@@ -97,25 +98,19 @@ namespace Livrable2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Stopwatch sw = Stopwatch.StartNew();
-            sauvegarde save = new sauvegarde();
-            save.set_nom(TextboxName.Text);
-            save.set_source(TextboxSourceFR.Text);
-            save.set_destination(TextboxDestinationFR.Text);
-            sauvegarde.sauvegarde_complet(save.get_source(), save.get_destination());
+           
+            String[] listExt = TextboxExt.Text.Split(";");
 
-            string source_directory = TextboxSourceFR.Text;
-            DirectoryInfo disource = new DirectoryInfo(source_directory);
-            long taille = log.file_size(disource);
+            Livrable2.VM.VM.add_save(listExt, TextboxName.Text, TextboxSourceFR.Text, TextboxDestinationFR.Text);
 
-            sw.Stop();
-            Console.Write(sw.Elapsed.TotalMilliseconds);
-            double time_exec = sw.Elapsed.TotalMilliseconds;
+            TextboxSourceFR.Text = "";
+            TextboxDestinationFR.Text = "";
+            
+        }
 
-
-
-            log.write_log(save, taille, log.time_now(), time_exec); // execute fonction qui va permettre d'écrire dans fichier JSON
-            states.write_file(save, taille);
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Livrable2.VM.VM.start_save();
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)

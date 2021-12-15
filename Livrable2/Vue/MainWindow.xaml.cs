@@ -23,19 +23,25 @@ namespace Livrable2
         public MainWindow()
         {
             InitializeComponent();
+            Process[] process = Process.GetProcessesByName("Livrable2"); // Se lance une seule fois 
+
+            if (process.Length != 1)
+            {
+                MessageBox.Show("L'application est déjà en route");
+                Environment.Exit(0);
+            }
+
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Window1 gg = new Window1();
-            gg.Show();
+            Livrable2.VM.VM.run_windows_fr();
             this.Close();
 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Window2 g = new Window2();
-            g.Show();
+            Livrable2.VM.VM.run_windows_en();
             this.Close();
         }
     }
