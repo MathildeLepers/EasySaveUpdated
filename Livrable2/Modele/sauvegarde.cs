@@ -37,8 +37,8 @@ namespace Livrable2.Modele
             long taille = log.file_size(disource);
 
 
-            Window4 gggg = new Window4();
-            gggg.Show();
+            //Window4 gggg = new Window4();
+            //gggg.Show();
            
 
             foreach (var directory in Directory.GetDirectories(source))
@@ -91,8 +91,8 @@ namespace Livrable2.Modele
             {
                 File.Copy(filenoprio, Path.Combine(dest, Path.GetFileName(filenoprio)));
                 nbfile++;
-                int ca = (nbfile / nb) * 100;
-                pourcent = ca;
+                //int ca = (nbfile / nb) * 100;
+                //pourcent = ca;
 
             }
 
