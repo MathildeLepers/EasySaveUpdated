@@ -21,8 +21,7 @@ namespace Livrable2
     /// </summary>
     public partial class Window1 : Window
     {
-        public List<sauvegarde> saveList = new List<sauvegarde>();
-        public List<Thread> threadList = new List<Thread>();
+        
         public Window1()
         {
             InitializeComponent();
@@ -99,32 +98,19 @@ namespace Livrable2
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            sauvegarde save = new sauvegarde();
+           
             String[] listExt = TextboxExt.Text.Split(";");
-            save.set_ext(listExt);
-            save.set_nom(TextboxName.Text);
-            save.set_source(TextboxSourceFR.Text);
-            save.set_destination(TextboxDestinationFR.Text);
-            saveList.Add(save);
+
+            Livrable2.VM.VM.add_save(listExt, TextboxName.Text, TextboxSourceFR.Text, TextboxDestinationFR.Text);
+
             TextboxSourceFR.Text = "";
             TextboxDestinationFR.Text = "";
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            for(int i = 0; i < saveList.Count; i++){              
-                
-                sauvegarde save = saveList[i];
-
-                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save));
-                threadList.Add(thread);
-            }
-
-
-            for(int j = 0; j < threadList.Count; j++)
-            {
-                threadList[j].Start();
-            }
+            Livrable2.VM.VM.start_save();
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)
