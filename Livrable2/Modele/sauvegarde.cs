@@ -24,12 +24,9 @@ namespace Livrable2.Modele
         public float p;
 
 
-       
 
         public static void sauvegarde_complet(string source, string dest, sauvegarde save)
         {
-            
-            float ca;
             Stopwatch sw = Stopwatch.StartNew();
             etat_file = State.INPROGRESS;
 
@@ -51,12 +48,32 @@ namespace Livrable2.Modele
                     Console.Write(Path.Combine(dest, dirName));
                 }
                 sauvegarde_complet(directory, Path.Combine(dest, dirName), save);
-                nb=nb+1;
             }
             
             nbfile = 0;
-          
+            
             foreach (var file in Directory.GetFiles(source))
+            {
+                foreach(string extention in ext)
+                {
+                    if(Path.GetExtension(file).Equals(extention, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        listFilePrio.Add(file);
+                    }
+                    else
+                    {
+                        listFileNoPrio.Add(file);
+                    }
+                }
+            }
+
+            foreach(var file in listFilePrio)
+            {
+                File.Copy(file, Path.Combine(dest, Path.GetFileName(file)));
+                nbfile++;
+            }
+
+            foreach (var file in listFileNoPrio)
             {
                 File.Copy(file, Path.Combine(dest, Path.GetFileName(file)));
                 nbfile++;
@@ -64,7 +81,7 @@ namespace Livrable2.Modele
                 pourcent = ca;
 
             }
-            
+
             etat_file = State.END;
 
             sw.Stop();
@@ -79,7 +96,7 @@ namespace Livrable2.Modele
         {
 
         }
-      
+
 
         public void set_source(string source)
         {
@@ -113,6 +130,11 @@ namespace Livrable2.Modele
         public string get_source()
         {
             return this.source;
+        }
+
+        public string[] get_ext()
+        {
+            return this.ext;
         }
 
         public string get_destination()

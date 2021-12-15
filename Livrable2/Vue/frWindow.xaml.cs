@@ -102,6 +102,8 @@ namespace Livrable2
         private void Button_Add(object sender, RoutedEventArgs e)
         {
             sauvegarde save = new sauvegarde();
+            String[] listExt = TextboxExt.Text.Split(";");
+            save.set_ext(listExt);
             save.set_nom(TextboxName.Text);
             save.set_source(TextboxSourceFR.Text);
             save.set_destination(TextboxDestinationFR.Text);

@@ -74,6 +74,10 @@ namespace Livrable2
             this.Close();
         }
 
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+        }
+
         private void DestinationPathen_Click(object sender, RoutedEventArgs e)
         {
             // Create OpenFileDialog

@@ -14,17 +14,19 @@
         <Grid Background="#FF050840" Grid.ColumnSpan="2">
             <Button Content="Commencer" HorizontalAlignment="Left" Margin="625,321,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click"/>
             <Button Content="Ajouter" HorizontalAlignment="Left" Margin="625,280,0,0" VerticalAlignment="Top" Width="107" Click="Button_Add"/>
-            <TextBox x:Name="TextboxName" HorizontalAlignment="Left" Margin="179,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="25" TextChanged="TextBox_TextChanged" FontSize="20"/>
+            <TextBox x:Name="TextboxName" HorizontalAlignment="Left" Margin="179,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="26" TextChanged="TextBox_TextChanged" FontSize="20"/>
             <TextBox x:Name="TextboxSourceFR" HorizontalAlignment="Left" Margin="179,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="39" TextChanged="TextBox_TextChanged_1"/>
             <TextBox x:Name="TextboxDestinationFR" HorizontalAlignment="Left" Margin="179,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="39" TextChanged="TextBox_TextChanged"/>
             <Image HorizontalAlignment="Left" Height="174" Margin="640,80,0,0" VerticalAlignment="Top" Width="133" Source="\Vue\Capture_d_écran_2021-12-04_212546-removebg-preview.png"/>
-            <Label Content="Appelation" HorizontalAlignment="Left" Margin="31,72,0,0" VerticalAlignment="Top" Height="48" Width="72" Foreground="White" />
+            <Label Content="Appelation" HorizontalAlignment="Left" Margin="31,27,0,0" VerticalAlignment="Top" Height="48" Width="72" Foreground="White" />
             <Label Content="Source" HorizontalAlignment="Left" Margin="31,160,0,0" VerticalAlignment="Top" Height="48" Width="72" Foreground="White"/>
             <Label Content="Destination" HorizontalAlignment="Left" Margin="31,247,0,0" VerticalAlignment="Top" Height="48" Width="72" Foreground="White"/>
             <Button Content="Revenir au menu" HorizontalAlignment="Left" Margin="625,360,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="32" Width="107" Foreground="#FFCEDBFE" Background="#FF15224D" FontSize="12" FontWeight="Bold"/>
             <Button x:Name="DestinationPath" Content="..." HorizontalAlignment="Left" Margin="595,246,0,0" VerticalAlignment="Top" Width="21" Background="#FF15224D" Foreground="#FFCEDBFE" Click="DestinationPath_Click" FontSize="16" FontWeight="Bold" RenderTransformOrigin="0.143,-1.976"/>
             <Button x:Name="Source3Points" Content="..." HorizontalAlignment="Left" Margin="595,171,0,0" VerticalAlignment="Top" Width="21" Background="#FF15224D" Foreground="#FFCEDBFE" Click="Source3Points_Click" FontSize="16" FontWeight="Bold" RenderTransformOrigin="0.143,1.347"/>
             <Button Content="cryptage/decryptage" HorizontalAlignment="Left" Margin="293,326,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click3"/>
+            <TextBox x:Name="TextboxExt" HorizontalAlignment="Left" Margin="179,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="25" TextChanged="TextBox_TextChanged" FontSize="20" RenderTransformOrigin="0.496,1.468"/>
+            <Label Content="Extensions prioritaires" HorizontalAlignment="Left" Margin="31,90,0,0" VerticalAlignment="Top" Height="36" Width="137" Foreground="White" />
 
         </Grid>
     </Grid>
