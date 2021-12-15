@@ -51,18 +51,27 @@ namespace Livrable2.Modele
             }
             
             nbfile = 0;
-            
-            foreach (var file in Directory.GetFiles(source))
+
+            List<string> listFilePrio = new List<string>();
+            List<string> listFileNoPrio = new List<string>();
+
+            foreach (string file in Directory.GetFiles(source))
             {
-                foreach(string extention in ext)
-                {
-                    if(Path.GetExtension(file).Equals(extention, StringComparison.InvariantCultureIgnoreCase))
+                bool softwarestate = Livrable2.Modele.logicielmetier.Logiciel_Metier(Path.GetFileNameWithoutExtension(file)); // Vérifie chaque file n'est pas ouvert en processus 
+                //System.Windows.MessageBox.Show(softwarestate.ToString() + " " + file);
+
+                if (softwarestate == false)
+                { 
+                    foreach (string extention in ext)
                     {
-                        listFilePrio.Add(file);
-                    }
-                    else
-                    {
-                        listFileNoPrio.Add(file);
+                        if (Path.GetExtension(file).Equals(extention, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            listFilePrio.Add(file);
+                        }
+                        else
+                        {
+                            listFileNoPrio.Add(file);
+                        }
                     }
                 }
             }
@@ -88,6 +97,7 @@ namespace Livrable2.Modele
             double time_exec = sw.Elapsed.TotalMilliseconds;
             log.write_log(save, taille, log.time_now(), time_exec); // execute fonction qui va permettre d'écrire dans fichier JSON
             states.write_file(save, taille);
+            System.Windows.MessageBox.Show("Sauvegarde terminé avec succès");
 
         }
 

@@ -19,8 +19,4 @@
     <Resource Include="Vue\Capture_d_écran_2021-12-04_212546-removebg-preview.png" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="VM\" />
-  </ItemGroup>
-
 </Project>
