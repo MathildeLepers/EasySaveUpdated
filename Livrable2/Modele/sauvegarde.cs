@@ -76,15 +76,15 @@ namespace Livrable2.Modele
                 }
             }
 
-            foreach(var file in listFilePrio)
+            foreach(var fileprio in listFilePrio)
             {
-                File.Copy(file, Path.Combine(dest, Path.GetFileName(file)));
+                File.Copy(fileprio, Path.Combine(dest, Path.GetFileName(fileprio)));
                 nbfile++;
             }
 
-            foreach (var file in listFileNoPrio)
+            foreach (var filenoprio in listFileNoPrio)
             {
-                File.Copy(file, Path.Combine(dest, Path.GetFileName(file)));
+                File.Copy(filenoprio, Path.Combine(dest, Path.GetFileName(filenoprio)));
                 nbfile++;
                 ca = (nbfile / nb) * 100;
                 pourcent = ca;

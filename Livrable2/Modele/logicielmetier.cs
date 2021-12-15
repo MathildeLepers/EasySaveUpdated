@@ -9,11 +9,10 @@ namespace Livrable2.Modele
     {
         public static bool Logiciel_Metier(string softwareName)
         {
-            System.Windows.MessageBox.Show(softwareName + " " + Process.GetProcessesByName("notepad").ToString() );
             if ( Process.GetProcessesByName(softwareName).Length > 0)
             {
                 
-                var result = System.Windows.MessageBox.Show("Une application est lancé, voulez vous la fermer ? ", "Easysave", System.Windows.MessageBoxButton.YesNo);
+                var result = System.Windows.MessageBox.Show(softwareName + " est lancé, voulez vous la fermer ? ", "Easysave", System.Windows.MessageBoxButton.YesNo);
 
                 switch (result)
                 {
