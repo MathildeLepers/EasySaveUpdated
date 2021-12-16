@@ -24,16 +24,9 @@ namespace Livrable2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (XMLbutton.IsChecked.ToString() == "false" && JSONbutton.IsChecked.ToString() == "false")
-            {
-                MessageBox.Show("Veuillez sélectionner un format ! ");
-            }
-            else
-            {
-
                 VM.VM.button_checked(XMLbutton.IsChecked, JSONbutton.IsChecked);
                 VM.VM.start_save();
-            }
+            
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -72,7 +65,7 @@ namespace Livrable2
             }
             else
             {
-                MessageBox.Show("Le répertoire de Source précisé est vide");
+                MessageBox.Show("The specified Source directory is empty");
             }
         }
 
@@ -85,13 +78,20 @@ namespace Livrable2
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
-            String[] listExt = TextboxExt.Text.Split(";");
+            if (XMLbutton.IsChecked.ToString() == "False" && JSONbutton.IsChecked.ToString() == "False")
+            {
+                MessageBox.Show("Select a file format ! ");
+            }
+            else
+            {
+                String[] listExt = TextboxExt.Text.Split(";");
 
-            VM.VM.add_save(listExt, TextboxName.Text, TextboxSourceEN.Text, TextboxDestinationEN.Text);
+                VM.VM.add_save(listExt, TextboxName.Text, TextboxSourceEN.Text, TextboxDestinationEN.Text);
 
-            TextboxSourceEN.Text = "";
-            TextboxDestinationEN.Text = "";
-            TextboxName.Text = "";
+                TextboxSourceEN.Text = "";
+                TextboxDestinationEN.Text = "";
+                TextboxName.Text = "";
+            }
         }
 
         private void DestinationPathen_Click(object sender, RoutedEventArgs e)
@@ -111,7 +111,7 @@ namespace Livrable2
             else
             {
 
-                MessageBox.Show("Le répertoire source Destination est vide");
+                MessageBox.Show("The specified Destination directory is empty");
             }
         }
 
