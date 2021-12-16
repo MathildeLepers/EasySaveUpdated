@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Livrable2.Modele;
+using System.Windows.Threading;
 
 namespace Livrable2.Vue
 {
@@ -18,26 +19,48 @@ namespace Livrable2.Vue
     /// </summary>
     public partial class Window4 : Window
     {
+        public static Window4 w = new Window4();
+        public static Canvas cv = new Canvas();
+        public static int j = 20;
+        public static int k = 0;
+
         public Window4()
         {
             InitializeComponent();
         }
 
-
-
-        private void progress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        public void Add()
         {
-            int c;
-            c = sauvegarde.nbfile;
-            for (int i = 0; i == sauvegarde.nb;)
-            {
-                progress.Value = sauvegarde.pourcent;
-                if (sauvegarde.nbfile != c)
+            ProgressBar pg = new ProgressBar();
+
+
+            pg.Maximum = 100;
+            pg.Minimum = 0;
+            pg.Value = 0;
+            pg.Height = 30;
+            pg.Width = 200;
+            pg.Name = "prog" + k.ToString();
+            k = k + 1;
+            j = j + 40;
+            Canvas.SetTop(pg, j);
+            cv.Children.Add(pg);
+
+        }
+        public static void ProgressBar(double i, int a)
+        {
+            Application.Current.Dispatcher.Invoke(new Action(() => {
+                w.Content = cv;
+                w.Show();
+                foreach (var child in cv.Children)
                 {
-                    c = sauvegarde.nbfile;
-                    i++;
+                    if (child is ProgressBar && (child as ProgressBar).Name == "prog" + a.ToString())
+                    {
+                        (child as ProgressBar).Value = i;
+                    }
                 }
-            }
+            }), DispatcherPriority.ContextIdle);
+            
+
         }
     }
 }

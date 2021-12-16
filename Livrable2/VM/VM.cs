@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Livrable2.Modele;
 using System.Threading;
+using Livrable2.Vue;
 
 namespace Livrable2.VM
 {
@@ -41,7 +42,8 @@ namespace Livrable2.VM
 
                 sauvegarde save = saveList[i];
 
-                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save));
+
+                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save, i));
                 threadList.Add(thread);
             }
 
@@ -51,6 +53,8 @@ namespace Livrable2.VM
                 threadList[j].Start();
             }
         }
+
+ 
 
         public static void crypt()
         {

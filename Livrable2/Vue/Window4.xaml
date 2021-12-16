@@ -11,11 +11,10 @@
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
-        <ProgressBar HorizontalAlignment="Left" Height="32" Margin="242,185,0,0" VerticalAlignment="Top" Width="316" Grid.ColumnSpan="2"  Minimum="0" Maximum="100" Name="progress" ValueChanged="progress_ValueChanged"  />
-        <Button Content="Button" Margin="100,247,45,159"/>
-        <Button Content="Button" Margin="52,247,332,159" Grid.Column="1"/>
-        <Button Content="Button" Margin="286,247,99,159" Grid.Column="1"/>
-        <Label Content="Etat d'avancement " Margin="64,144,332,266" Grid.Column="1"/>
+        <Button x:Name="Play" Content="Play" Margin="117,341,27,65"/>
+        <Button x:Name="Pause" Content="Pause" Margin="274,341,111,65" Grid.Column="1"/>
+        <Button x:Name="Stop" Content="Stop" Margin="37,341,347,65" Grid.Column="1"/>
+        <Label Content="Etat d'avancement " Margin="79,32,317,378" Grid.Column="1"/>
 
     </Grid>
 </Window>

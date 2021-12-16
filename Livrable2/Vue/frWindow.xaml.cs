@@ -22,7 +22,7 @@ namespace Livrable2
     /// </summary>
     public partial class Window1 : Window
     {
-        
+
         public Window1()
         {
             InitializeComponent();
@@ -107,11 +107,15 @@ namespace Livrable2
             TextboxSourceFR.Text = "";
             TextboxDestinationFR.Text = "";
 
+            Window4 w = new Window4();
+            w.Add();
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             VM.VM.start_save();
+            this.Close();
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)

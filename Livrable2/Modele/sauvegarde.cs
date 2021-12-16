@@ -26,8 +26,9 @@ namespace Livrable2.Modele
 
 
 
-        public static void sauvegarde_complet(sauvegarde save)
+        public static void sauvegarde_complet(sauvegarde save, int z)
         {
+            System.Windows.MessageBox.Show(z.ToString()); 
             string source = save.get_source();
             string dest = save.get_destination();
             Stopwatch sw = Stopwatch.StartNew();
@@ -52,7 +53,7 @@ namespace Livrable2.Modele
                 }
                 source = directory;
                 dest = Path.Combine(dest, dirName); 
-                sauvegarde_complet(save);
+                sauvegarde_complet(save, z);
             }
             
             nbfile = 0;
@@ -81,19 +82,33 @@ namespace Livrable2.Modele
                 }
             }
 
-            foreach(var fileprio in listFilePrio)
+            double i = 0;
+            double step = 100/(listFileNoPrio.Count+ listFilePrio.Count);
+
+            for (int x = 1; x <= listFilePrio.Count; x++)
             {
-                File.Copy(fileprio, Path.Combine(dest, Path.GetFileName(fileprio)));
-                nbfile++;
+                // Copy the file and increment the ProgressBar if successful.
+                if (copy(listFilePrio[x - 1], dest) == true)
+                {
+                    // Perform the increment on the ProgressBar.
+                    i = i + step;
+                    Vue.Window4.ProgressBar(i, z);
+                    nbfile++;
+                }
             }
 
-            foreach (var filenoprio in listFileNoPrio)
-            {
-                File.Copy(filenoprio, Path.Combine(dest, Path.GetFileName(filenoprio)));
-                nbfile++;
-                //int ca = (nbfile / nb) * 100;
-                //pourcent = ca;
 
+            for (int x = 1; x <= listFileNoPrio.Count; x++)
+            {
+                // Copy the file and increment the ProgressBar if successful.
+                if (copy(listFileNoPrio[x - 1], dest) == true)
+                {
+                    // Perform the increment on the ProgressBar.
+                    
+                    i = i + step;
+                    Vue.Window4.ProgressBar(i, z);
+                    nbfile++;
+                }
             }
 
             etat_file = State.END;
@@ -106,7 +121,11 @@ namespace Livrable2.Modele
 
         }
 
-
+        public static bool copy(string file, string sourceDest)
+        {
+            File.Copy(file, Path.Combine(sourceDest, Path.GetFileName(file)));
+            return true;
+        }
         public static void sauvegarde_differentiel()
         {
 
