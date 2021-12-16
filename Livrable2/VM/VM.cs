@@ -10,6 +10,9 @@ namespace Livrable2.VM
     {
         public static List<sauvegarde> saveList = new List<sauvegarde>();
         public static List<Thread> threadList = new List<Thread>();
+        public static bool? xmlchecked;
+        public static bool? jsonchecked;
+
 
         public static void run_windows_fr()
         {
@@ -36,20 +39,42 @@ namespace Livrable2.VM
 
         public static void start_save()
         {
-            for (int i = 0; i < saveList.Count; i++)
+            if (xmlchecked == true || jsonchecked == true)
             {
+                for (int i = 0; i < saveList.Count; i++)
+                {
 
-                sauvegarde save = saveList[i];
+                    sauvegarde save = saveList[i];
 
-                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save));
-                threadList.Add(thread);
+                    Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save));
+                    threadList.Add(thread);
+                }
+
+
+                for (int j = 0; j < threadList.Count; j++)
+                {
+                    threadList[j].Start();
+                }
+            }
+
+            
+        }
+
+        public static void button_checked(bool? statexml, bool? statejson)
+        {
+            if (statexml == true || statejson == false)
+            {
+                Livrable2.VM.VM.xmlchecked = true;
+                Livrable2.VM.VM.jsonchecked = false;
+
+            }
+            else if (statexml == false || statejson == true)
+            {
+                Livrable2.VM.VM.xmlchecked = false;
+                Livrable2.VM.VM.jsonchecked = true;
             }
 
 
-            for (int j = 0; j < threadList.Count; j++)
-            {
-                threadList[j].Start();
-            }
         }
 
         public static void crypt()

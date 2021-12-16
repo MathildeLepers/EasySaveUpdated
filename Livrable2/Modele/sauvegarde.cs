@@ -28,6 +28,7 @@ namespace Livrable2.Modele
 
         public static void sauvegarde_complet(sauvegarde save)
         {
+            
             string source = save.get_source();
             string dest = save.get_destination();
             Stopwatch sw = Stopwatch.StartNew();
@@ -37,8 +38,8 @@ namespace Livrable2.Modele
             long taille = log.file_size(disource);
 
 
-            Window4 gggg = new Window4();
-            gggg.Show();
+            //Window4 gggg = new Window4();
+            //gggg.Show();
            
 
             foreach (var directory in Directory.GetDirectories(source))
@@ -91,8 +92,8 @@ namespace Livrable2.Modele
             {
                 File.Copy(filenoprio, Path.Combine(dest, Path.GetFileName(filenoprio)));
                 nbfile++;
-                int ca = (nbfile / nb) * 100;
-                pourcent = ca;
+                //int ca = (nbfile / nb) * 100;
+                //pourcent = ca;
 
             }
 
@@ -100,9 +101,19 @@ namespace Livrable2.Modele
 
             sw.Stop();
             double time_exec = sw.Elapsed.TotalMilliseconds;
-            log.write_log(save, taille, log.time_now(), time_exec); // execute fonction qui va permettre d'écrire dans fichier JSON
-            states.write_file(save, taille);
-            System.Windows.MessageBox.Show("Sauvegarde terminé avec succès");
+
+            if (VM.VM.jsonchecked == true || VM.VM.xmlchecked == false)
+            {
+                log.write_log(save, taille, log.time_now(), time_exec); // execute fonction qui va permettre d'écrire dans fichier JSON
+                states.write_file(save, taille);
+                System.Windows.MessageBox.Show("Sauvegarde terminé avec succès !");
+            }
+            else if (VM.VM.jsonchecked == false || VM.VM.xmlchecked == true)
+            {
+                logXML.log_xml(save, taille, log.time_now(), time_exec);
+                fileXML.file_xml(save, taille);
+                System.Windows.MessageBox.Show("Sauvegarde terminé avec succès !");
+            }
 
         }
 

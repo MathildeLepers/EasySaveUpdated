@@ -5,22 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Livrable2"
         mc:Ignorable="d"
-        Title="Window2" Height="450" Width="800">
+        Title="Window2" Height="469" Width="769">
 
-    <Grid Background="#FF050840" Grid.ColumnSpan="2">
-        <Button Name="btou_strt" Content="Start" HorizontalAlignment="Left" Margin="625,321,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click"/>
-        <Button Name="btou_add" Content="Add" HorizontalAlignment="Left" Margin="625,280,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click2"/>
-        <TextBox HorizontalAlignment="Left" Margin="179,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="25" TextChanged="TextBox_TextChanged" FontSize="20"/>
-        <TextBox x:Name="TextboxSourceEN" HorizontalAlignment="Left" Margin="179,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="39" TextChanged="TextBox_TextChanged_1"/>
-        <TextBox x:Name="TextboxDestinationEN" HorizontalAlignment="Left" Margin="179,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="39" TextChanged="TextBox_TextChanged"/>
-        <Image HorizontalAlignment="Left" Height="174" Margin="640,80,0,0" VerticalAlignment="Top" Width="133" Source="\Vue\Capture_d_écran_2021-12-04_212546-removebg-preview.png"/>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="31,72,0,0" VerticalAlignment="Top" Height="48" Width="72" Foreground="White"/>
-        <Label Content="Source" HorizontalAlignment="Left" Margin="31,160,0,0" VerticalAlignment="Top" Height="48" Width="72" Foreground="White"/>
-        <Label Content="Destination" HorizontalAlignment="Left" Margin="31,247,0,0" VerticalAlignment="Top" Height="48" Width="72" Foreground="White" />
-        <Button Content="Revenir au menu" HorizontalAlignment="Left" Margin="625,360,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="32" Width="107" Foreground="#FFCEDBFE" Background="#FF15224D" FontSize="12" FontWeight="Bold"/>
-        <Button x:Name="DestinationPathen" Content="..." HorizontalAlignment="Left" Margin="595,246,0,0" VerticalAlignment="Top" Width="21" Background="#FF15224D" Foreground="#FFCEDBFE" Click="DestinationPathen_Click" FontSize="16" FontWeight="Bold" RenderTransformOrigin="0.143,-1.976"/>
-        <Button x:Name="Source3Pointsen" Content="..." HorizontalAlignment="Left" Margin="595,171,0,0" VerticalAlignment="Top" Width="21" Background="#FF15224D" Foreground="#FFCEDBFE" Click="Source3Pointsen_Click" FontSize="16" FontWeight="Bold" RenderTransformOrigin="0.143,1.347"/>
-        <Button Content="cryptage/decryptage" HorizontalAlignment="Left" Margin="293,326,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click3"/>
+    <Grid Background="#FF99ADB6" Grid.ColumnSpan="2" Margin="0,0,0,2">
+        <Button Name="btou_strt" Content="Start" HorizontalAlignment="Left" Margin="177,342,0,0" VerticalAlignment="Top" Width="311" Height="35" Click="Button_Click" FontSize="10" Background="#FFC9BDBD"/>
+        <Button Name="btou_add" Content="Add" HorizontalAlignment="Left" Margin="335,318,0,0" VerticalAlignment="Top" Width="153" Click="Button_Click2" Height="19" FontSize="10"/>
+        <TextBox x:Name="TextboxExt" HorizontalAlignment="Left" Margin="177,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269" Height="19" TextChanged="TextBox_TextChanged" FontSize="20"/>
+        <TextBox x:Name="TextboxSourceEN" HorizontalAlignment="Left" Margin="177,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269" Height="20" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox x:Name="TextboxDestinationEN" HorizontalAlignment="Left" Margin="177,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269" Height="19" TextChanged="TextBox_TextChanged"/>
+        <Image HorizontalAlignment="Left" Height="142" Margin="576,104,0,0" VerticalAlignment="Top" Width="133" Source="\Vue\Capture_d_écran_2021-12-04_212546-removebg-preview.png"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="124,85,0,0" VerticalAlignment="Top" Height="24" Width="42" Foreground="White" FontSize="10"/>
+        <Label Content="Source" HorizontalAlignment="Left" Margin="122,145,0,0" VerticalAlignment="Top" Height="32" Width="46" Foreground="White" FontSize="10"/>
+        <Label Content="Destination" HorizontalAlignment="Left" Margin="105,172,0,0" VerticalAlignment="Top" Height="24" Width="72" Foreground="White" FontSize="10" />
+        <Button Content="Return &#xD;&#xA;Main &#xD;&#xA;Menu" HorizontalAlignment="Left" Margin="20,11,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="275" Width="77" Foreground="#FFCEDBFE" Background="#FF115571" FontSize="12" FontWeight="Bold"/>
+        <Button x:Name="DestinationPathen" Content="..." HorizontalAlignment="Left" Margin="464,178,0,0" VerticalAlignment="Top" Width="21" Background="#FF15224D" Foreground="#FFCEDBFE" Click="DestinationPathen_Click" FontSize="8" FontWeight="Bold" RenderTransformOrigin="0.143,-1.976" Height="18"/>
+        <Button x:Name="Source3Pointsen" Content="..." HorizontalAlignment="Left" Margin="464,149,0,0" VerticalAlignment="Top" Width="21" Background="#FF15224D" Foreground="#FFCEDBFE" Click="Source3Pointsen_Click" FontSize="8" FontWeight="Bold" RenderTransformOrigin="0.143,1.347" Height="19"/>
+        <Button Content="Encryption / Decryption" HorizontalAlignment="Left" Margin="177,318,0,0" VerticalAlignment="Top" Width="153" Height="19" Click="Button_Click3" FontSize="10"/>
+        <RadioButton x:Name="JSONbutton" Content="JSON" HorizontalAlignment="Left" Margin="403,239,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked_2" FontSize="10"/>
+        <RadioButton x:Name="XMLbutton" Content="XML" HorizontalAlignment="Left" Margin="403,258,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <TextBox x:Name="TextboxName" HorizontalAlignment="Left" Height="20" Margin="177,87,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="269"/>
+        <Label Content="Extension" HorizontalAlignment="Left" Foreground="White" Height="21" Margin="108,119,0,0" VerticalAlignment="Top" Width="64" FontSize="10"/>
+        <Label Content="Choose log file format :" HorizontalAlignment="Left" Foreground="White" Width="122" FontSize="10" Margin="262,239,0,180"/>
 
     </Grid>
 

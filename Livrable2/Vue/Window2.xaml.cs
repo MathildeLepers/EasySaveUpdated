@@ -24,7 +24,16 @@ namespace Livrable2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (XMLbutton.IsChecked.ToString() == "false" && JSONbutton.IsChecked.ToString() == "false")
+            {
+                MessageBox.Show("Veuillez sélectionner un format ! ");
+            }
+            else
+            {
 
+                VM.VM.button_checked(XMLbutton.IsChecked, JSONbutton.IsChecked);
+                VM.VM.start_save();
+            }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -76,6 +85,13 @@ namespace Livrable2
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
+            String[] listExt = TextboxExt.Text.Split(";");
+
+            VM.VM.add_save(listExt, TextboxName.Text, TextboxSourceEN.Text, TextboxDestinationEN.Text);
+
+            TextboxSourceEN.Text = "";
+            TextboxDestinationEN.Text = "";
+            TextboxName.Text = "";
         }
 
         private void DestinationPathen_Click(object sender, RoutedEventArgs e)
@@ -100,6 +116,11 @@ namespace Livrable2
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
         {
 
         }

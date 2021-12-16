@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Livrable2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#FF050840">
+    <Grid Background="#FF99ADB6">
 
         <Image HorizontalAlignment="Center" Height="187" Margin="0,24,0,0" VerticalAlignment="Top" Width="172" Source="\Vue\Capture_d_écran_2021-12-04_212546-removebg-preview.png"/>
         <Button Content="Français" Margin="114,276,444,96" RenderTransformOrigin="0.5,0.5" Background="White" BorderThickness="4,4,4,4" BorderBrush="Black" FontFamily="Bahnschrift Light" FontSize="20" Width="190" Click="Button_Click_2"/>
