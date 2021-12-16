@@ -22,8 +22,6 @@ namespace Livrable2
     /// </summary>
     public partial class Window1 : Window
     {
-        public List<sauvegarde> saveList = new List<sauvegarde>();
-        public List<Thread> threadList = new List<Thread>();
         
         public Window1()
         {
@@ -101,35 +99,29 @@ namespace Livrable2
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-           
-            String[] listExt = TextboxExt.Text.Split(";");
+            if (XMLbutton.IsChecked.ToString() == "False" && JSONbutton.IsChecked.ToString() == "False")
+            {
+                MessageBox.Show("Veuillez sélectionner un format ! ");
+            }
+            else
+            {
+                String[] listExt = TextboxExt.Text.Split(";");
 
-            Livrable2.VM.VM.add_save(listExt, TextboxName.Text, TextboxSourceFR.Text, TextboxDestinationFR.Text);
+                VM.VM.add_save(listExt, TextboxName.Text, TextboxSourceFR.Text, TextboxDestinationFR.Text);
 
-            TextboxSourceFR.Text = "";
-            TextboxDestinationFR.Text = "";
+                TextboxSourceFR.Text = "";
+                TextboxDestinationFR.Text = "";
+                TextboxName.Text = "";
+            }
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            for(int i = 0; i < saveList.Count; i++){
-               
-                
-                sauvegarde save = saveList[i];
-                  
-                Thread thread = new Thread(() => sauvegarde.sauvegarde_complet(save.get_source(), save.get_destination(), save));
-                threadList.Add(thread);
-
-
-            }
-
-
-            for(int j = 0; j < threadList.Count; j++)
-            {
-
-                threadList[j].Start();
-            }
+        {         
+                            
+            VM.VM.button_checked(XMLbutton.IsChecked, JSONbutton.IsChecked);
+            VM.VM.start_save();
+            
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)
@@ -148,5 +140,22 @@ namespace Livrable2
             }
         }
 
+        private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
+
+        private void RadioButton_Checked_3(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void JSONbutton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
     }
 }

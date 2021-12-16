@@ -16,7 +16,7 @@ namespace Livrable2.Modele
         public static State etat_file;
         public static int nbfile;
         public static int nb;
-
+        public string[] ext;
         private string destination;
         private string nom;
         private string type;
@@ -62,7 +62,7 @@ namespace Livrable2.Modele
 
                 if (softwarestate == false)
                 { 
-                    foreach (string extention in ext)
+                    foreach (string extention in save.get_ext())
                     {
                         if (Path.GetExtension(file).Equals(extention, StringComparison.InvariantCultureIgnoreCase))
                         {

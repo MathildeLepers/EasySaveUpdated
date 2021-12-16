@@ -5,28 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Livrable2"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
+        Title="Window1" Height="469" Width="769">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid Background="#FF050840" Grid.ColumnSpan="2">
-            <Button Content="Commencer" HorizontalAlignment="Left" Margin="625,321,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click"/>
-            <Button Content="Ajouter" HorizontalAlignment="Left" Margin="625,280,0,0" VerticalAlignment="Top" Width="107" Click="Button_Add"/>
-            <TextBox x:Name="TextboxName" HorizontalAlignment="Left" Margin="179,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="26" TextChanged="TextBox_TextChanged" FontSize="20"/>
-            <TextBox x:Name="TextboxSourceFR" HorizontalAlignment="Left" Margin="179,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="39" TextChanged="TextBox_TextChanged_1"/>
-            <TextBox x:Name="TextboxDestinationFR" HorizontalAlignment="Left" Margin="179,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="39" TextChanged="TextBox_TextChanged"/>
-            <Image HorizontalAlignment="Left" Height="174" Margin="640,80,0,0" VerticalAlignment="Top" Width="133" Source="\Vue\Capture_d_écran_2021-12-04_212546-removebg-preview.png"/>
-            <Label Content="Appelation" HorizontalAlignment="Left" Margin="31,27,0,0" VerticalAlignment="Top" Height="48" Width="72" Foreground="White" />
-            <Label Content="Source" HorizontalAlignment="Left" Margin="31,160,0,0" VerticalAlignment="Top" Height="48" Width="72" Foreground="White"/>
-            <Label Content="Destination" HorizontalAlignment="Left" Margin="31,247,0,0" VerticalAlignment="Top" Height="48" Width="72" Foreground="White"/>
-            <Button Content="Revenir au menu" HorizontalAlignment="Left" Margin="625,360,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="32" Width="107" Foreground="#FFCEDBFE" Background="#FF15224D" FontSize="12" FontWeight="Bold"/>
-            <Button x:Name="DestinationPath" Content="..." HorizontalAlignment="Left" Margin="595,246,0,0" VerticalAlignment="Top" Width="21" Background="#FF15224D" Foreground="#FFCEDBFE" Click="DestinationPath_Click" FontSize="16" FontWeight="Bold" RenderTransformOrigin="0.143,-1.976"/>
-            <Button x:Name="Source3Points" Content="..." HorizontalAlignment="Left" Margin="595,171,0,0" VerticalAlignment="Top" Width="21" Background="#FF15224D" Foreground="#FFCEDBFE" Click="Source3Points_Click" FontSize="16" FontWeight="Bold" RenderTransformOrigin="0.143,1.347"/>
-            <Button Content="cryptage/decryptage" HorizontalAlignment="Left" Margin="293,326,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click3"/>
-            <TextBox x:Name="TextboxExt" HorizontalAlignment="Left" Margin="179,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" Height="25" TextChanged="TextBox_TextChanged" FontSize="20" RenderTransformOrigin="0.496,1.468"/>
-            <Label Content="Extensions prioritaires" HorizontalAlignment="Left" Margin="31,90,0,0" VerticalAlignment="Top" Height="36" Width="137" Foreground="White" />
+        <Grid Background="#FF99ADB6" Grid.ColumnSpan="2">
+            <Button Content="Commencer" HorizontalAlignment="Center" Margin="0,345,0,0" VerticalAlignment="Top" Width="316" Height="34" Click="Button_Click" FontSize="10" Background="#FFC9BDBD"/>
+            <Button Content="Ajouter" HorizontalAlignment="Left" Margin="390,307,0,0" VerticalAlignment="Top" Width="152"  Click="Button_Add" Height="19" FontSize="10"/>
+            <TextBox x:Name="TextboxName" FontSize="10" HorizontalAlignment="Left" Margin="226,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269" Height="19" TextChanged="TextBox_TextChanged" />
+            <TextBox x:Name="TextboxSourceFR" FontSize="10" HorizontalAlignment="Left" Margin="226,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269" Height="19" TextChanged="TextBox_TextChanged"/>
+            <TextBox x:Name="TextboxDestinationFR" FontSize="10" HorizontalAlignment="Left" Margin="226,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269" Height="19" TextChanged="TextBox_TextChanged"/>
+            <Image HorizontalAlignment="Left" Height="142" Margin="576,104,0,0" VerticalAlignment="Top" Width="133" Source="\Vue\Capture_d_écran_2021-12-04_212546-removebg-preview.png"/>
+            <Label Content="Appelation" HorizontalAlignment="Left" Margin="157,78,0,0" VerticalAlignment="Top" Height="24" Width="64" Foreground="White" FontSize="10" />
+            <Label Content="Source" HorizontalAlignment="Left" Margin="179,132,0,0" VerticalAlignment="Top" Height="30" Width="42" Foreground="White" FontSize="10"/>
+            <Label Content="Destination" HorizontalAlignment="Left" Margin="155,169,0,0" VerticalAlignment="Top" Height="25" Width="66" Foreground="White" FontSize="10"/>
+            <Button Content="Revenir &#xD;&#xA;au menu" HorizontalAlignment="Left" Margin="5,15,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="260" Width="96" Foreground="#FFCEDBFE" Background="#FF115571" FontSize="12" FontWeight="Bold"/>
+            <Button x:Name="DestinationPath" Content="..." HorizontalAlignment="Left" Margin="511,167,0,0" VerticalAlignment="Top" Width="22" Background="#FF15224D" Foreground="#FFCEDBFE" Height="19" Click="DestinationPath_Click" FontSize="8" FontWeight="Bold" RenderTransformOrigin="0.143,-1.976"/>
+            <Button x:Name="Source3Points" Content="..." HorizontalAlignment="Left" Margin="511,138,0,0" VerticalAlignment="Top" Width="22" Background="#FF15224D" Foreground="#FFCEDBFE" Height="18" Click="Source3Points_Click" FontSize="8" FontWeight="Bold" RenderTransformOrigin="0.143,1.347"/>
+            <Button Content="Cryptage / Décryptage" HorizontalAlignment="Left" Margin="226,308,0,0" VerticalAlignment="Top" Width="153" Height="18" Click="Button_Click3" FontSize="10"/>
+            <TextBox x:Name="TextboxExt" HorizontalAlignment="Left" Margin="226,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269" Height="19" FontSize="10" TextChanged="TextBox_TextChanged_1"/>
+            <Label Content="Extensions prioritaires" HorizontalAlignment="Left" Margin="113,108,0,0" VerticalAlignment="Top" Height="24" Width="108" Foreground="White" FontSize="10" />
+            <Label Content="Choissez le format des fichiers log :" HorizontalAlignment="Left" Margin="245,239,0,0" VerticalAlignment="Top" Width="168" FontSize="10"/>
+            <RadioButton x:Name="XMLbutton" Content="XML" HorizontalAlignment="Left" Margin="432,260,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked_3" FontSize="10"/>
+            <RadioButton x:Name="JSONbutton" Content="JSON" HorizontalAlignment="Left" Margin="432,236,0,0" VerticalAlignment="Top" FontSize="10"/>
+
 
         </Grid>
     </Grid>
