@@ -86,8 +86,8 @@ namespace Livrable2.Modele
             {
                 File.Copy(filenoprio, Path.Combine(dest, Path.GetFileName(filenoprio)));
                 nbfile++;
-                ca = (nbfile / nb) * 100;
-                pourcent = ca;
+                pourcent = (nbfile / nb) * 100;
+               
 
             }
 
