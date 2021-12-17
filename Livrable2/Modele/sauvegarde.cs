@@ -22,11 +22,15 @@ namespace Livrable2.Modele
         private string type;
         private static double tmp;
         public float p;
+        public string[] ext;
 
 
 
-        public static void sauvegarde_complet(string source, string dest, sauvegarde save)
+        public static void sauvegarde_complet(sauvegarde save)
         {
+            
+            string source = save.get_source();
+            string dest = save.get_destination();
             Stopwatch sw = Stopwatch.StartNew();
             etat_file = State.INPROGRESS;
 
@@ -34,8 +38,8 @@ namespace Livrable2.Modele
             long taille = log.file_size(disource);
 
 
-            Window4 gggg = new Window4();
-            gggg.Show();
+            //Window4 gggg = new Window4();
+            //gggg.Show();
            
 
             foreach (var directory in Directory.GetDirectories(source))
@@ -47,7 +51,9 @@ namespace Livrable2.Modele
                     Directory.CreateDirectory(Path.Combine(dest, dirName));
                     Console.Write(Path.Combine(dest, dirName));
                 }
-                sauvegarde_complet(directory, Path.Combine(dest, dirName), save);
+                source = directory;
+                dest = Path.Combine(dest, dirName); 
+                sauvegarde_complet(save);
             }
             
             nbfile = 0;
@@ -86,8 +92,8 @@ namespace Livrable2.Modele
             {
                 File.Copy(filenoprio, Path.Combine(dest, Path.GetFileName(filenoprio)));
                 nbfile++;
-                pourcent = (nbfile / nb) * 100;
-               
+                //int ca = (nbfile / nb) * 100;
+                //pourcent = ca;
 
             }
 
@@ -95,9 +101,19 @@ namespace Livrable2.Modele
 
             sw.Stop();
             double time_exec = sw.Elapsed.TotalMilliseconds;
-            log.write_log(save, taille, log.time_now(), time_exec); // execute fonction qui va permettre d'écrire dans fichier JSON
-            states.write_file(save, taille);
-            System.Windows.MessageBox.Show("Sauvegarde terminé avec succès");
+
+            if (VM.VM.jsonchecked == true || VM.VM.xmlchecked == false)
+            {
+                log.write_log(save, taille, log.time_now(), time_exec); // execute fonction qui va permettre d'écrire dans fichier JSON
+                states.write_file(save, taille);
+                System.Windows.MessageBox.Show("Sauvegarde terminé avec succès !");
+            }
+            else if (VM.VM.jsonchecked == false || VM.VM.xmlchecked == true)
+            {
+                logXML.log_xml(save, taille, log.time_now(), time_exec);
+                fileXML.file_xml(save, taille);
+                System.Windows.MessageBox.Show("Sauvegarde terminé avec succès !");
+            }
 
         }
 
@@ -111,6 +127,11 @@ namespace Livrable2.Modele
         public void set_source(string source)
         {
             this.source = source;
+        }
+
+        public void set_ext(string[] ext)
+        {
+            this.ext = ext;
         }
 
         public void set_destination(string destination)
