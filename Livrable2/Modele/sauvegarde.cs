@@ -92,7 +92,7 @@ namespace Livrable2.Modele
                 {
                     // Perform the increment on the ProgressBar.
                     i = i + step;
-                    Vue.Window4.ProgressBar(i, z);
+                    Vue.Window4.ProgressBar(i, z-1);
                     nbfile++;
                 }
             }
@@ -106,7 +106,7 @@ namespace Livrable2.Modele
                     // Perform the increment on the ProgressBar.
                     
                     i = i + step;
-                    Vue.Window4.ProgressBar(i, z);
+                    Vue.Window4.ProgressBar(i, z-1);
                     nbfile++;
                 }
             }
