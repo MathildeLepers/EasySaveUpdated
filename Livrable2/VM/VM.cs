@@ -55,7 +55,10 @@ namespace Livrable2.VM
                 for (int j = 0; j < threadList.Count; j++)
                 {
                     threadList[j].Start();
+                   
+                    
                 }
+                
             }
 
             
