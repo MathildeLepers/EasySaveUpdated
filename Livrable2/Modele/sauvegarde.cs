@@ -5,6 +5,7 @@ using System.IO;
 using Livrable2.Modele;
 using System.Diagnostics;
 using Livrable2.Vue;
+using Livrable2.VM;
 
 namespace Livrable2.Modele
 {
@@ -16,7 +17,7 @@ namespace Livrable2.Modele
         public static State etat_file;
         public static int nbfile;
         public static int nb;
-        public string[] ext;
+
         private string destination;
         private string nom;
         private string type;
@@ -28,7 +29,7 @@ namespace Livrable2.Modele
 
         public static void sauvegarde_complet(sauvegarde save)
         {
-            
+           
             string source = save.get_source();
             string dest = save.get_destination();
             Stopwatch sw = Stopwatch.StartNew();
@@ -81,8 +82,8 @@ namespace Livrable2.Modele
                     }
                 }
             }
-
-            foreach(var fileprio in listFilePrio)
+         
+            foreach (var fileprio in listFilePrio)
             {
                 File.Copy(fileprio, Path.Combine(dest, Path.GetFileName(fileprio)));
                 nbfile++;
@@ -92,8 +93,10 @@ namespace Livrable2.Modele
             {
                 File.Copy(filenoprio, Path.Combine(dest, Path.GetFileName(filenoprio)));
                 nbfile++;
-                //int ca = (nbfile / nb) * 100;
-                //pourcent = ca;
+               // int ca = (nbfile / nb) * 100;
+               // VM.VM.lancer_s(ca);
+
+
 
             }
 

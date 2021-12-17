@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Livrable2.Modele;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Livrable2.VM
 {
@@ -59,6 +60,7 @@ namespace Livrable2.VM
 
             
         }
+     
 
         public static void button_checked(bool? statexml, bool? statejson)
         {
@@ -77,6 +79,33 @@ namespace Livrable2.VM
 
         }
 
+        public void lancer_s(int g)
+        {
+          
+           
+//Thread th = new Thread(serverEcoute(g));
+            //th.Start();
+        }
+        public void serverEcoute(int progression)
+        {
+            string g;
+            server s = new server();
+            s.SeConnecter("127.0.0.1", 80);
+            s.AccepterConnection();
+            System.Windows.MessageBox.Show("client connecté");
+            string dataReceve = "";
+            while (true)
+            {
+                dataReceve = s.EcouterReseau();
+                Debug.WriteLine(dataReceve);
+                if (dataReceve == "demande d info")
+                {
+                    g = progression.ToString();
+                    s.envoiData(g);
+                }
+            }
+
+        }
         public static void crypt()
         {
         //    Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
@@ -93,4 +122,4 @@ namespace Livrable2.VM
         //    }
         }
     }
-    }
+}

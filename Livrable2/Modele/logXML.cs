@@ -45,7 +45,7 @@ namespace Livrable2.Modele
                 XmlNode n = xd.ImportNode(xd2.FirstChild, true);
                 nl.AppendChild(n);
                 xd.Save("logXML.xml");
-
+                 
                 
             }
 

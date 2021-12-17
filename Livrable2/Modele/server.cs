@@ -11,7 +11,7 @@ namespace Livrable2.Modele
     {
         private Socket socket;
         private Socket client;
-        public Server()
+        public server()
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
@@ -56,4 +56,4 @@ namespace Livrable2.Modele
         }
     }
 }
-}
+

@@ -26,6 +26,7 @@ namespace Livrable2
         public Window1()
         {
             InitializeComponent();
+            
         }
 
        
@@ -156,6 +157,9 @@ namespace Livrable2
 
         }
 
-        
+        private void JSONbutton_Checked_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
